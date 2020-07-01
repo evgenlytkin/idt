@@ -34,7 +34,7 @@ sitemap_values = {
         },
         {
           link_name: 'FAQ',
-          path: 'faq',
+          path: 'faqs',
         }
       ]
     },
