@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :home, only: [:index], path: "home"
+
+  root to: "home#index"
 end

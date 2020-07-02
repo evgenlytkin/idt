@@ -1,24 +1,60 @@
-# README
+IDT Coding Exercise
+=========
+Description
+---------
+For implementing Ajax call from React to backend I created two controllers: sitemap and home(root path). In the home controller, we use `react_component` helper for launching react component which makes a request to sitemap controller endpoint.
+Rspec unit controller tests cover `sitemap` controller and a model.
+Capybara integration tests cover interaction with frontend and backend and mimic user behaviour.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Requirements
+---------
 
-Things you may want to cover:
+* Rails 6
+* Ruby 2.7.0
+* SQLite
+* React
+* Rspec
+* Capybara
 
-* Ruby version
+Quick start
+---------
 
-* System dependencies
+Install:
 
-* Configuration
+```
+$ brew install sqlite yarn
+$ bundle install
+$ yarn install
+```
 
-* Database creation
+Database setup:
 
-* Database initialization
+```
+$ bin/rake db:create db:migrate db:seed
+```
 
-* How to run the test suite
+Start server:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails s
+```
 
-* Deployment instructions
+React
+-----------------
 
-* ...
+### Webpack
+
+The [Webpacker gem](https://github.com/rails/webpacker) handles the Webpack compiling of the code and is automatically run on the server. Custom [Webpack settings](https://github.com/rails/webpacker/blob/master/docs/webpack.md) can be set in `/config/webpack`
+
+```
+$ yarn start
+```
+
+Testing
+---------
+
+To run the entire test suite:
+
+```
+$ rspec
+```

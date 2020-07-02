@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "./bin/webpack-dev-server",
+    "build": "./bin/webpack"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
     "@rails/webpacker": "5.1.1",
