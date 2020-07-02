@@ -7,7 +7,8 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'capybara/rspec'
+
+require_relative '../config/capybara'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -67,4 +68,27 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each, type: :system) do |example|
+    DatabaseCleaner.strategy = :deletion, { cache_tables: false }
+
+    example.run
+
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :headless_chrome
+  end
 end

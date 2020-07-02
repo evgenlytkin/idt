@@ -26,7 +26,7 @@ class Sitemap extends Component {
     const { data, isLoaded, error } = this.state;
 
     if (error) {
-      return <div>Error: {error}</div>;
+      return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {

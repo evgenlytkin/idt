@@ -6,6 +6,6 @@ const baseRequest = axios.create({
   baseURL: BASE_URL,
 });
 
-const getSitemapValues = () => baseRequest.get('/sitemap').then(response => response.data);
+const getSitemapValues = () => baseRequest.get('/sitemap.json').then(response => response.data);
 
 export default getSitemapValues;
